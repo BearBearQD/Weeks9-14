@@ -19,7 +19,6 @@ public class Item : MonoBehaviour
         {
             // Find the Health component on the player
             playerHealth = player.GetComponent<Health>();
-            Debug.Log("nadgna");
             if (playerHealth == null)
             {
                 Debug.LogError("Health script not found on player!");
@@ -39,8 +38,6 @@ public class Item : MonoBehaviour
 
     public virtual void Use()
     {
-        Debug.Log("Item used: " + itemName);
-
         // Check if the player's Health script is assigned
         if (playerHealth != null)
         {

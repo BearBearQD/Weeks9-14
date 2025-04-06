@@ -24,6 +24,13 @@ public class Inventory : MonoBehaviour
     // List to track instantiated objects in the world
     private List<GameObject> instantiatedItems = new List<GameObject>();
 
+    private void Start()
+    {
+        Debug.Log("Welcome To The Inventory system without the use of colliders, bassically the inventory will randomly fill up with various foods which you can use to heal your health");
+        Debug.Log("To Clear Your Inventory Press Space");
+        Debug.Log("Use all your items press A");
+    }
+
     // Method to add an item to the inventory
     public bool AddItem(Item item)
     {

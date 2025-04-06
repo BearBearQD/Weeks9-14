@@ -16,14 +16,9 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentHealth);
         if (healthText != null)
         {
             healthText.text = "Health: " + currentHealth;
-        }
-        else
-        {
-            Debug.LogError("Health TextMeshProUGUI is not assigned!");
         }
     }
 
@@ -31,7 +26,6 @@ public class Health : MonoBehaviour
     public void IncreaseHealth(int amount)
     {
         currentHealth += amount;
-        Debug.Log("health");
     }
 
 }
