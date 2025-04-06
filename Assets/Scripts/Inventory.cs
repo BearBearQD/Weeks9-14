@@ -108,6 +108,30 @@ public class Inventory : MonoBehaviour
             lastSpawnX += itemSpacing;
         }
     }
+    // Method to use all instantiated items in the scene
+    public void UseAllInstantiatedItems()
+    {
+        foreach (GameObject instantiatedItem in instantiatedItems)
+        {
+            // Get the Item component and call Use() if it exists
+            Item item = instantiatedItem.GetComponent<Item>();
+            if (item != null)
+            {
+                item.Use();
+            }
+            Destroy(instantiatedItem);
+        }
+
+        // Clear the list of instantiated objects
+        instantiatedItems.Clear();
+
+        // Clear the inventory list
+        items.Clear();
+        Debug.Log("Inventory cleared and all items destroyed.");
+
+        // Reset last spawn position to the initial spawn position
+        lastSpawnX = initialSpawnX;
+    }
 
     // Method to clear the inventory and destroy all instantiated objects
     public void ClearInventory()
@@ -135,6 +159,11 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ClearInventory();
+        }
+        // Check if "A" key is pressed
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UseAllInstantiatedItems(); // Call method to use all instantiated items
         }
     }
 }
