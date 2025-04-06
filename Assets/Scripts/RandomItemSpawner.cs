@@ -31,7 +31,7 @@ public class RandomItemSpawner : MonoBehaviour
             // Attempt to add the item to the inventory
             if (inventory.AddItem(itemToAdd))
             {
-                Debug.Log(itemToAdd.itemName + " added to inventory.");
+
             }
         }
     }

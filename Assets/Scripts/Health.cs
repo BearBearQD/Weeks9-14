@@ -19,13 +19,7 @@ public class Health : MonoBehaviour
     public void IncreaseHealth(float amount)
     {
         currentHealth += amount;
-
-        // Clamp health to max health (health cannot go above maxHealth)
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-
+        Debug.Log("health");
         UpdateHealthText();  // Update health UI after increasing health
     }
 
@@ -33,22 +27,17 @@ public class Health : MonoBehaviour
     public void DecreaseHealth(float amount)
     {
         currentHealth -= amount;
-
-        // Clamp health to ensure it doesn't go below zero
-        if (currentHealth < 0)
-        {
-            currentHealth = 0;
-        }
-
         UpdateHealthText();  // Update health UI after decreasing health
     }
 
     // Method to update the health text UI
-    private void UpdateHealthText()
+    public void UpdateHealthText()
     {
+        Debug.Log(currentHealth);
         if (healthText != null)
         {
-            healthText.text = "Health: " + currentHealth.ToString("F0");  // Display health as an integer (F0 = no decimals)
+            healthText.text = "Health: " + currentHealth;
+            Debug.Log(currentHealth);
         }
         else
         {

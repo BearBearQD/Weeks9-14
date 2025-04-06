@@ -6,23 +6,50 @@ public class Item : MonoBehaviour
 {
     // Properties of the item
     public string itemName;            // Name of the item
-    public string itemDescription;     // Description of the item
-    public Sprite itemIcon;            // Sprite image for the item (can be set in Unity Inspector)
-    public int itemID;                 // Unique ID for the item
     public GameObject itemPrefab;  // The prefab to instantiate in the scene
+    public float healthIncreaseAmount = 20f;  // Amount to increase health when used
+    Health playerHealth;
+    GameObject player;
 
-    public void InitializeItem(string name, string description, Sprite icon, int id, GameObject prefab)
+    private void Start()
+    {
+        // Find the player GameObject by its tag
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // Find the Health component on the player
+            playerHealth = player.GetComponent<Health>();
+            Debug.Log("nadgna");
+            if (playerHealth == null)
+            {
+                Debug.LogError("Health script not found on player!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player GameObject not found! Make sure the player is tagged as 'Player'.");
+        }
+
+    }
+    public void InitializeItem(string name, GameObject prefab)
     {
         itemName = name;
-        itemDescription = description;
-        itemIcon = icon;
-        itemID = id;
         itemPrefab = prefab;
     }
 
     public virtual void Use()
     {
-        //Debug.Log("Using " + itemName + ": " + itemDescription);
-        // Placeholder for item-specific behavior (e.g., healing, equipping)
+        Debug.Log("Item used: " + itemName);
+
+        // Check if the player's Health script is assigned
+        if (playerHealth != null)
+        {
+            playerHealth.currentHealth += healthIncreaseAmount;
+            Debug.Log("Health increased by " + healthIncreaseAmount);
+        }
+        else
+        {
+            Debug.LogError("Player health reference is missing!");
+        }
     }
 }
