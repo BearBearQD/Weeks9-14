@@ -12,7 +12,20 @@ public class Health : MonoBehaviour
     {
         // Initialize current health to max health at the start
         currentHealth = maxHealth;
-        UpdateHealthText(); // Update UI when the game starts
+    }
+
+    private void Update()
+    {
+         Debug.Log(currentHealth);
+         if (healthText != null)
+         {
+             healthText.text = "Health: " + currentHealth;
+         }
+         else
+         {
+             Debug.LogError("Health TextMeshProUGUI is not assigned!");
+         }
+
     }
 
     // Method to increase health
@@ -20,28 +33,13 @@ public class Health : MonoBehaviour
     {
         currentHealth += amount;
         Debug.Log("health");
-        UpdateHealthText();  // Update health UI after increasing health
     }
 
     // Method to decrease health
     public void DecreaseHealth(float amount)
     {
         currentHealth -= amount;
-        UpdateHealthText();  // Update health UI after decreasing health
     }
 
-    // Method to update the health text UI
-    public void UpdateHealthText()
-    {
-        Debug.Log(currentHealth);
-        if (healthText != null)
-        {
-            healthText.text = "Health: " + currentHealth;
-            Debug.Log(currentHealth);
-        }
-        else
-        {
-            Debug.LogError("Health TextMeshProUGUI is not assigned!");
-        }
-    }
+
 }
