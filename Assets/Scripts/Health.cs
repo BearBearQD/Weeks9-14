@@ -4,8 +4,8 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     // Public variables
-    public float maxHealth = 100f;                // Maximum health value
-    public float currentHealth;                   // Current health value
+    public int maxHealth = 100;                // Maximum health value
+    public int currentHealth;                   // Current health value
     public TextMeshProUGUI healthText;            // Reference to the TextMeshProUGUI UI element
 
     void Start()
@@ -16,30 +16,22 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-         Debug.Log(currentHealth);
-         if (healthText != null)
-         {
-             healthText.text = "Health: " + currentHealth;
-         }
-         else
-         {
-             Debug.LogError("Health TextMeshProUGUI is not assigned!");
-         }
-
+        Debug.Log(currentHealth);
+        if (healthText != null)
+        {
+            healthText.text = "Health: " + currentHealth;
+        }
+        else
+        {
+            Debug.LogError("Health TextMeshProUGUI is not assigned!");
+        }
     }
 
     // Method to increase health
-    public void IncreaseHealth(float amount)
+    public void IncreaseHealth(int amount)
     {
         currentHealth += amount;
         Debug.Log("health");
     }
-
-    // Method to decrease health
-    public void DecreaseHealth(float amount)
-    {
-        currentHealth -= amount;
-    }
-
 
 }

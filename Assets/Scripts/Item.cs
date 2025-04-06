@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
     // Properties of the item
     public string itemName;            // Name of the item
     public GameObject itemPrefab;  // The prefab to instantiate in the scene
-    public float healthIncreaseAmount = 20f;  // Amount to increase health when used
+    public int healthIncreaseAmount = 20;  // Amount to increase health when used
     Health playerHealth;
     GameObject player;
 
