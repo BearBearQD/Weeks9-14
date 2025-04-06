@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 59088278}
-  minInterval: 0
+  minInterval: 0.5
   maxInterval: 1
   possibleItems:
   - {fileID: 8994009815346019229, guid: d5fe4576080a0064786af62bb3c6be33, type: 3}
